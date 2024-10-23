@@ -2,11 +2,7 @@ const express = require("express");
 const amqp = require("amqplib");
 
 const app = express();
-
-const accountSid = "$sid";
-const authToken = "$tocken";
-
-const client = require("twilio")(accountSid, authToken);
+const client = require("twilio")($accountSid, $authToken);
 
 async function connect() {
   try {
