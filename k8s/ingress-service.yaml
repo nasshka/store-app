@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    spec.ingressClassName: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: store-node-port-service
+                port:
+                  number: 80
+          - path: /api/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: products-api-cluster-ip-service
+                port:
+                  number: 5002
