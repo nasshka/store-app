@@ -3,8 +3,8 @@ const amqp = require("amqplib");
 
 const app = express();
 
-const accountSid = "AC647a7d08fe868330a057f1cddb0ebb58";
-const authToken = "b401fd2d89d8b36e202097ddc537a0f1";
+const accountSid = "$sid";
+const authToken = "$tocken";
 
 const client = require("twilio")(accountSid, authToken);
 
